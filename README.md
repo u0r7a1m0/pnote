@@ -7,7 +7,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 ----
-<p align="center"><img src="/storage/app/public/p_note_icon.png" width="400" alt="Logo"></a></p>
+<p align="center"><img src="storage/app/public/p_note_icon.png" width="400" alt="Logo"></a></p>
 
 
 
