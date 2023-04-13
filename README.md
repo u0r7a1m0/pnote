@@ -6,6 +6,10 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
+----
+<p align="center"><img src="/storage/app/public/p_note_icon.png" width="400" alt="Logo"></a></p>
+
+
 
 ## About P! note
 
@@ -20,7 +24,7 @@ P! noteはプログラミング言語を学ぶ際のメソッドやオブジェ�
 - これをわかりやすくメモして、いつでもすぐ検索してみれるアプリケーションがないかなと考えたところ、よし！作ろう！と思い立ち今に至る。
 
 
-### 設計
+## 設計
 
 - **[WF：Figma](https://www.figma.com/file/2BpHwVSeN7eYlaBSGGaCvj/P!-note?node-id=0%3A1&t=OJG8g9s0zDt30EJl-1)**
 - **[ER図](https://drive.google.com/file/d/1RU-11N33-EddnVT3r1U-Uh4LY6Gg5A3K/view?usp=sharing)**
