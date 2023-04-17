@@ -12,9 +12,12 @@ class NoteController extends Controller
      */
     public function index()
     {
-        return view('notes.index'); //
+        // return view('notes.index'); //
+        $notes = Note::orderBy('created_at', 'asc')->get();
+        return view('notes.index', [
+        'notes' => $notes
+    ]);
     }
-
     public function new()
     {
         return view('notes.new');//
@@ -24,7 +27,7 @@ class NoteController extends Controller
      */
     public function create()
     {
-        return view('notes.create');//
+        return view('notes.new');//
     }
 
     /**
@@ -32,7 +35,18 @@ class NoteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $notes = new Note;
+        $notes->user_id   = $request->user_id;
+        $notes->bookmark_id = $request->bookmark_id;
+        $notes->note_tag_id = $request->note_tag_id;
+        $notes->name   = $request->name;        
+        $notes->description   = $request->description;
+        $notes->cord_txt = $request->cord_txt;
+        $notes->url_txt = $request->url_txt;
+        $notes->public_status   = $request->public_status;
+        $notes->save(); 
+        return redirect('/');
+        
     }
 
     /**
