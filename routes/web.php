@@ -1,8 +1,4 @@
 <?php
-
-// use App\Http\Controllers\UserController;
-// use Illuminate\Support\Facades\Route;
-
 // /*
 // |--------------------------------------------------------------------------
 // | Web Routes
@@ -14,7 +10,6 @@
 // |
 // */
 
-
 use App\Http\Controllers\UserController;//9.43.x~
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -25,16 +20,16 @@ Route::patch('/users/{user}', [UserController::class,'update']);
 Route::delete('/users/{user}', [UserController::class,'destroy']);
 
 
-// Route::get('/', function () {
-//     return view('top');
-// });
+Route::get('/', function () {
+    return view('top');
+});
 
 // この行を追加
 Route::get('/', 'HomesController@top')->name('top');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 // ノート
 use App\Http\Controllers\NoteController;
 Route::get('/notes', [NoteController::class,'index']);
@@ -49,19 +44,7 @@ Route::delete('/notes/{note}', [NoteController::class,'destroy']);
 use App\Http\Controllers\HomesController;
 Route::get('/', [HomesController::class,'top']);
 
-// use App\Models\Bookmark;
-// use App\Http\Controllers\BookmarkController;
 
-
-// use App\Models\Tag;
-// use App\Http\Controllers\TagController;
-
-// use App\Models\NoteTag;
-// use App\Http\Controllers\NoteTagController;
-
-/**
-* 「ログイン機能」インストールで追加されています 
-*/
 //Route::get('/dashboard', function () {
 //    return view('dashboard');
 //})->middleware(['auth', 'verified'])->name('dashboard');
