@@ -13,7 +13,7 @@
             </div>
             <div class="dark:bg-gray-800 overflow-hidden sm:rounded-lg my-2 ml-4">
                 <!--新規登録-->
-                <p>わかる〜</p>
+                <p>新規投稿フォームがここにはいるよ！</p>
             </div>
 
         </div>
@@ -23,7 +23,11 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <i class="fa-solid fa-hashtag mr-2"></i>{{ __("New Tag") }}
                 </div>
-            </div> 
+            </div>
+            <div class="dark:bg-gray-800 overflow-hidden sm:rounded-lg my-2 ml-4">
+                <!--タグ登録-->
+                <p>タグ投稿フォームがここにはいるよ！</p>
+            </div>
         </div>
 
     </div>
