@@ -22,13 +22,32 @@ class NoteController extends Controller
     {
         return view('notes.new');//
     }
+    
+    public function create(Request $request)
+    {
+
+        $notes = new \App\Note;
+
+        // 値の登録
+        $notes->name = $request->name;
+        $notes->description = $request->description;
+        $notes->cord_txt = $request->cord_txt;
+        $notes->url_txt = $request->url_txt;
+        $notes->public_status = $request->public_status;
+
+        // 保存
+        $notes->save();
+
+        // 一覧にリダイレクト
+        return redirect()->to('notes.show');
+    }
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        return view('notes.new');//
-    }
+    // public function create()
+    // {
+    //     return view('notes.new');//
+    // }
 
     /**
      * Store a newly created resource in storage.
