@@ -1,3 +1,4 @@
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -12,11 +13,10 @@
                 </div>
             </div>
             <div class="dark:bg-gray-800 overflow-hidden sm:rounded-lg my-2 ml-4">
-                
-                
-                <form>
+  
+                    <form action="/notes" method="POST">
+                    @csrf
                     <!--新規登録-->
-
                     <div class="mt-2">
                         <p>タイトル</p>
                         <input type="textarea" name="name" value="{{ old('name') }}" placeholder="メソッドやオブジェクト名" class="p-2" size="80" >
@@ -43,30 +43,26 @@
                     
                     <div class="mt-2">
                         <p>参考URL</p>
-                        <input type="textarea" name="url_txt" value="{{ old('url_txt') }}" id="url" placeholder="https://example.com" pattern="https://.*" size="80" class="p-2">
+                        <input type="textarea" name="url_txt" value="{{ old('url_txt') }}" placeholder="https://example.com" size="80" class="p-2">
                         @if($errors->has('url_txt')) 
                             <span class="text-danger">{{ $errors->first('url_txt') }}</span>
                         @endif
                     </div>
                     
                     <div class="mt-2">
-                        <input type="radio" name="public_status" value="{{ old('public_status') }}">
-                        <label>公開</label>
-                        <input type="radio" name="public_status" value="{{ old('public_status') }}">
-                        <label>非公開</label>
-                        @if($errors->has('public_status')) 
-                            <span class="text-danger">{{ $errors->first('public_status') }}</span>
-                        @endif
+                            <input type="checkbox" name="public_status" value="{{ old('public_status') }}" >
+                            <input type="hidden" name="public_status" value="0">
+                            <label>公開</label>
+                            <input type="checkbox" name="public_status" value="1">
+                            <label>非公開</label>
                     </div>
                     
                     <div class="mt-3">
                         <input type="submit" value="Note create!" class="border py-2 px-4" />
                     </div>
                 </form>
-
             </div>
         </div>
-
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mt-4">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
@@ -77,7 +73,6 @@
                 <!--タグ登録-->
                 <form>
                     <!--新規登録-->
-
                     <div class="mt-2">
                         <p>タグ名</p>
                         <input type="textarea" name="name" value="{{ old('name') }}" placeholder="Ruby、PHP、Javaなど" class="p-2" size="80" >
@@ -85,17 +80,14 @@
                             <span class="text-danger">{{ $errors->first('name') }}</span>
                         @endif
                     </div>
-                    
                     <div class="mt-3">
                         <input type="submit" value="Tag create!" class="border py-2 px-4" />
                     </div>
                 </form>
-                
-
-
-
             </div>
         </div>
 
     </div>
 </x-app-layout>
+
+

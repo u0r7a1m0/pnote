@@ -22,7 +22,6 @@ return new class extends Migration
             
             $table->integer('user_id');
             $table->integer('bookmark_id');
-            $table->integer('note_tag_id');
             $table->boolean('public_status')->default(1);
         });
     }

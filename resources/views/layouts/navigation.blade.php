@@ -17,7 +17,7 @@
                     <x-nav-link :href="route('notes.index')" :active="request()->routeIs('notes.index')">
                         {{ __('Notes') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('notes.new')" :active="request()->routeIs('notes.new')">
+                    <x-nav-link :href="route('notes.create')" :active="request()->routeIs('notes.create')">
                         {{ __('New Note') }}
                     </x-nav-link>
                 </div>

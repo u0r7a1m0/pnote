@@ -13,90 +13,64 @@ class NoteController extends Controller
     public function index()
     {
         // return view('notes.index'); //
-        $notes = Note::orderBy('created_at', 'asc')->get();
-        return view('notes.index', [
-        'notes' => $notes
-    ]);
+        $notes = Note::all();
+        return view('notes/index', ['notes' => $notes]);
+
     }
-    public function new()
+
+    public function create()
     {
-        return view('notes.new');//
+      return view('notes/create');
+      
     }
-    
-    public function create(Request $request)
-    {
-
-        $notes = new \App\Note;
-
-        // 値の登録
-        $notes->name = $request->name;
-        $notes->description = $request->description;
-        $notes->cord_txt = $request->cord_txt;
-        $notes->url_txt = $request->url_txt;
-        $notes->public_status = $request->public_status;
-
-        // 保存
-        $notes->save();
-
-        // 一覧にリダイレクト
-        return redirect()->to('notes.show');
-    }
-    /**
-     * Show the form for creating a new resource.
-     */
-    // public function create()
-    // {
-    //     return view('notes.new');//
-    // }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+  public function store(Request $request)
+  {
+      $note = new Note;
+      // フォームから送られてきたデータをそれぞれ代入
+      $note->user_id = $request->user_id;
+      $note->name = $request->name;
+      $note->description = $request->description;
+      $note->cord_txt = $request->cord_txt;
+      $note->url_txt = $request->url_txt;
+      $note->public_status   = $request->public_status;
+      // データベースに保存
+      $note->save();
+      return redirect('notes/'.$id);
+    }
+    
+    public function show($id)
     {
-        $notes = new Note;
-        $notes->user_id   = $request->user_id;
-        $notes->bookmark_id = $request->bookmark_id;
-        $notes->note_tag_id = $request->note_tag_id;
-        $notes->name   = $request->name;        
-        $notes->description   = $request->description;
-        $notes->cord_txt = $request->cord_txt;
-        $notes->url_txt = $request->url_txt;
-        $notes->public_status   = $request->public_status;
-        $notes->save(); 
-        return redirect('/');
-        
+      $note = Note::find($id);
+      return view('notes.show', ['note' => $note]);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Note $note)
+    public function edit($id)
     {
-       return view('notes.show'); //
+      $note = Note::find($id);
+      return view('notes.edit', ['note' => $note]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Note $note)
+    public function update(Request $request, $id)
     {
-       return view('notes.edit'); //
+        $note = Note::find($id);
+        $note->name = $request->name;
+        $note->description = $request->description;
+        $note->cord_txt = $request->cord_txt;
+        $note->url_txt = $request->url_txt;
+        $note->public_status   = $request->public_status;
+        $note->save();
+        return redirect('notes/'.$id);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Note $note)
+    public function destroy($id)
     {
-       return view('notes.update'); //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Note $note)
-    {
-       return view('notes.delete'); //
+      $note = Note::find($id);
+      $note->delete();
+      return redirect('/notes');
     }
 }
+

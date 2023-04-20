@@ -46,6 +46,11 @@ class UserController extends Controller
         return view('user.show');
         $user = User::find($id);
         dd($user);
+        
+        if (\Auth::user()->id != $id){
+        // ログインしているユーザidと表示しようとしている$idが異なる
+        return redirect('/notes');
+        }
     }
 
     /**

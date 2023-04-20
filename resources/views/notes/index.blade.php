@@ -12,11 +12,21 @@
                 </div>
             </div>
             <div class="flex-1 text-gray-700 text-left bg-blue-100 px-4 py-2 m-2">
-                @if (count($notes) > 0)
-                    @foreach ($notes as $note)
-                        <x-collection id="{{ $note->id }}">{{ $note->name }}</x-collection>
+                <table class="table">
+                    <tr>
+                      <th>Name</th>
+                      <th>Description</th>
+                      <td></td>
+                    </tr>
+                    @foreach($notes as $note)
+                      <tr>
+                        <td>{{$note->name}}</td>
+                        <td>{{$note->description}}</td>
+                        <td><a href="/notes/{{$note->id}}">Details</a></td>
+                      </tr>
                     @endforeach
-                @endif
+                  </table>
+              
             </div>
         </div>
     </div>
