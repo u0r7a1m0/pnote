@@ -30,7 +30,6 @@ class NoteController extends Controller
       $note = new Note;
       $note->user_id = auth()->user()->id;
       $note->user_id = $request->user()->id;
-      $note->bookmark_id = $request->bookmark_id;
 
       $note->name = $request->name;
       $note->description = $request->description;

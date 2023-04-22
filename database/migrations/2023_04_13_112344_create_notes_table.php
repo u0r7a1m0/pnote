@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('url_txt');
             
             $table->integer('user_id')->constrained();
-            $table->integer('bookmark_id')->constrained();
             $table->boolean('public_status')->default(1);
         });
     }
