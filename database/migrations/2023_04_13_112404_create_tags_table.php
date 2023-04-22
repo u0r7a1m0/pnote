@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tags', function (Blueprint $table) {
-            $table->id();
+            $table->id()->nullable(false);
             $table->timestamps();
             
-            $table->string('name');
+            $table->string('name')->nullable(false);
         });
     }
 

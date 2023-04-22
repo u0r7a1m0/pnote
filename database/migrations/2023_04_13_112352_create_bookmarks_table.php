@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('bookmarks', function (Blueprint $table) {
-            $table->id();
+            $table->id()->nullable(false);
             $table->timestamps();
             
-            $table->integer('user_id');
-            $table->integer('note_id');
+            $table->integer('user_id')->constrained();
+            $table->integer('note_id')->constrained();
         });
     }
 

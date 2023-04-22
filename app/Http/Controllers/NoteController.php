@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Note;
 use Illuminate\Http\Request;
-
+use Auth;
 class NoteController extends Controller
 {
     /**
@@ -20,26 +20,25 @@ class NoteController extends Controller
 
     public function create()
     {
+      
       return view('notes/create');
       
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
+  
   public function store(Request $request)
   {
       $note = new Note;
-      // フォームから送られてきたデータをそれぞれ代入
-      $note->user_id = $request->user_id;
+      $note->user_id = auth()->user()->id;
+      $note->user_id = $request->user()->id;
+      $note->bookmark_id = $request->bookmark_id;
+
       $note->name = $request->name;
       $note->description = $request->description;
       $note->cord_txt = $request->cord_txt;
       $note->url_txt = $request->url_txt;
       $note->public_status   = $request->public_status;
-      // データベースに保存
       $note->save();
-      return redirect('notes/'.$id);
+      return redirect('notes/'. $note->id);
     }
     
     public function show($id)
@@ -56,14 +55,15 @@ class NoteController extends Controller
 
     public function update(Request $request, $id)
     {
-        $note = Note::find($id);
-        $note->name = $request->name;
-        $note->description = $request->description;
-        $note->cord_txt = $request->cord_txt;
-        $note->url_txt = $request->url_txt;
-        $note->public_status   = $request->public_status;
-        $note->save();
-        return redirect('notes/'.$id);
+      $note = Note::find($id);
+      $note->user_id = auth()->user()->id;
+      $note->name = $request->name;
+      $note->description = $request->description;
+      $note->cord_txt = $request->cord_txt;
+      $note->url_txt = $request->url_txt;
+      $note->public_status = $request->public_status;
+      $note->save();
+      return redirect('notes/'.$id);
     }
 
     public function destroy($id)
@@ -73,4 +73,5 @@ class NoteController extends Controller
       return redirect('/notes');
     }
 }
+
 

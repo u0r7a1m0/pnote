@@ -12,16 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('notes', function (Blueprint $table) {
-            $table->id();
+            $table->id()->nullable(false);
             $table->timestamps();
             
-            $table->string('name');
-            $table->string('description');
+            $table->string('name')->nullable(false);
+            $table->string('description')->nullable(false);
             $table->string('cord_txt');
             $table->string('url_txt');
             
-            $table->integer('user_id');
-            $table->integer('bookmark_id');
+            $table->integer('user_id')->constrained();
+            $table->integer('bookmark_id')->constrained();
             $table->boolean('public_status')->default(1);
         });
     }

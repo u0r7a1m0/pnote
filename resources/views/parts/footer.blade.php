@@ -1,1 +1,0 @@
-<h1 class="text-dark">フッター部分</h1>

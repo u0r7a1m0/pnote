@@ -12,7 +12,9 @@ class BookmarkController extends Controller
      */
     public function index()
     {
-        //
+        $bookmarks = Bookmark::all();
+        // preg_match_all('/#([a-zA-Z0-9０-９ぁ-んァ-ヶー一-龠]+)/u', $request->name, $match);
+        return view('bookmarks/index', ['bookmarks' => $bookmarks]);
     }
 
     /**

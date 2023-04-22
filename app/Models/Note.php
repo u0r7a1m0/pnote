@@ -9,15 +9,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Note extends Model
 {
     use HasFactory;
-    public $fillable = [
-        'user_id', 
-        'name', 
-        'description', 
-        'cord_txt', 
-        'url_txt', 
+    protected $fillable = [
+        'name',
+        'description',
+        'cord_txt',
+        'url_txt',
         'public_status'
-    ]; 
-    
+
+    ];
     public function note_tags(): HasMany
     {
         return $this->hasMany(NoteTag::class);

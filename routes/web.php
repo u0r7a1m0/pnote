@@ -38,6 +38,9 @@ Route::get('/', function () {
 use App\Http\Controllers\NoteController;
 Route::resource('notes', NoteController::class); 
 
+// ブックマーク
+use App\Http\Controllers\BookmarkController;
+Route::resource('bookmarks', BookmarkController::class); 
 /**
 * 「ログイン機能」インストールで追加されています 
 */

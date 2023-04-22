@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('note_tags', function (Blueprint $table) {
-            $table->id();
+            $table->id()->nullable(false);
             $table->timestamps();
             
-            $table->integer('tag_id');
-            $table->integer('note_id');
+            $table->integer('tag_id')->constrained();
+            $table->integer('note_id')->constrained();
         });
     }
 

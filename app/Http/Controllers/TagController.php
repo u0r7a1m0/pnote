@@ -21,6 +21,7 @@ class TagController extends Controller
     public function create()
     {
       return view('notes/create');
+      $tags = Tag::all();
     }
 
     /**
@@ -28,7 +29,15 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        foreach($match[1] as $input)
+        {
+    	$tag = Tag::create(['name'=>$input]);
+    	$tag = null;
+            $tag_id=Tag::where('name',$input)->get(['id']);
+            $note = Note::find($note_id);
+            $note -> tags()->attach($tag_id);
+        }
     }
 
     /**
@@ -60,6 +69,9 @@ class TagController extends Controller
      */
     public function destroy(Tag $tag)
     {
+        $tag = Tag::find($id);
+        $tag->delete();
+        return redirect('/notes/create');
         //
     }
 }

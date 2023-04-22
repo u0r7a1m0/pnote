@@ -9,7 +9,11 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class User extends Model
+// class User extends Model
+// {
+// }
+
+class User extends Authenticatable
 {
     public function notes(): HasMany
     {
@@ -19,10 +23,6 @@ class User extends Model
     {
         return $this->hasMany(Bookmark::class);
     }
-}
-
-class User extends Authenticatable
-{
     use HasApiTokens, HasFactory, Notifiable;
     /**
      * The attributes that are mass assignable.
