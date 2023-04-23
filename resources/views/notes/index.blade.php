@@ -14,15 +14,27 @@
             <div class="d-flex flex-wrap text-gray-700 text-left bg-blue-100 px-4 py-2 m-2">
                 @foreach($notes as $note)
                 <div class="card m-2" style="width: 20rem;">
-                  <div class="card-body">
-                    <h5 class="card-title mb-2"><b>{{$note->name}}</b></h5>
-                    <p class="card-text mb-2">{{$note->description}}</p>
+                  <div>
+                    <a href="/notes/{{$note->id}}">
+                        <h5 class="card-header mb-2"><b>{{$note->name}}</b></h5>
+                    </a>
+                    <div class="p-2">
+                        <a href="/notes/{{$note->id}}">
+                            <p class="card-text mb-2">{{$note->description}}</p>
+                            @foreach ($note->tags as $tag)
+                            <p class="card-text mb-2">{{$tag->name}}</p>
+                            @endforeach
+                        </a>
+                        <form method="POST" action="{{ route('notes.destroy', $note->id) }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="text-danger" onclick="return confirm('本当に削除しますか？')"><i class="fa-solid fa-trash-can"></i></button></button>
+                        </form>
 
-                    @foreach ($note->tags as $tag)
-                    <p class="card-text mb-2">{{$tag->name}}</p>
-                    @endforeach
-                    <a href="/notes/{{$note->id}}" class="btn btn-outline-primary">show</a>
-                    <a href="/notes/{{$note->id}}" class="btn btn-outline-danger"><i class="fa-solid fa-trash-can"></i></a>
+                    </div>
+
+                    
+
                   </div>
                 </div>
                 @endforeach

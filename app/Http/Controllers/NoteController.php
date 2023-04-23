@@ -81,11 +81,18 @@ class NoteController extends Controller
       return redirect('notes/'.$id);
     }
 
-    public function destroy($id)
+    // public function destroy($id)
+    // {
+    //   $note = Note::find($id);
+    //   $note->delete();
+    //   return redirect('/notes');
+    // }
+    public function destroy($noteId)
     {
-      $note = Note::find($id);
-      $note->delete();
-      return redirect('/notes');
+        $note = Note::find($noteId);
+        $note->note_Tags()->delete(); // Noteに関連するNoteTagを削除
+        $note->delete(); // Noteを削除
+        return redirect()->back()->with('success', 'Noteが削除されました');
     }
 }
 
