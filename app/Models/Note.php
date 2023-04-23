@@ -17,6 +17,12 @@ class Note extends Model
         'public_status'
 
     ];
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'note_tags');
+    }
+    
     public function note_tags(): HasMany
     {
         return $this->hasMany(NoteTag::class);

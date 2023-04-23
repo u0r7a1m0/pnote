@@ -20,6 +20,9 @@
                     <x-nav-link :href="route('notes.create')" :active="request()->routeIs('notes.create')">
                         {{ __('New Note') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('bookmarks.index')" :active="request()->routeIs('bookmarks.index')">
+                        {{ __('Bookmark') }}
+                    </x-nav-link>
                 </div>
             </div>
 

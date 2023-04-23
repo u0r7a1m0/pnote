@@ -8,12 +8,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Tag extends Model
 {
-    use HasFactory;
-    public $fillable = [
-        'name',
-    ]; 
-    public function note_tags(): HasMany
+    protected $fillable = [
+        'name'
+    ];
+
+    public function notes()
     {
-        return $this->hasMany(NoteTag::class);
+        return $this->belongsToMany(Note::class, 'note_tags');
     }
+    
 }

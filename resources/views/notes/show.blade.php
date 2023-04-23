@@ -8,28 +8,36 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("Note") }}
+                    {{$note->name}}
                 </div>
             </div>
             <div class="flex-1 text-gray-700 text-left bg-blue-100 px-4 py-2 m-2">
 
-                <table>
-                    <tr>
-                      <th>Item Id</th>
-                      <th>Name</th>
-                      <th>Description</th>
-                    </tr>
-                      <tr>
-                        <td>{{$note->name}}</td>
-                        <td>{{$note->description}}</td>
-                        <td>{{$note->cord_txt}}</td>
-                      </tr>
-                  </table>
-                  <a href="/notes/{{$note->id}}/edit">Edit</a>
-
-                  
-                  <a href="/notes">Back to index</a>
-
+                <div class="card">
+                    <div class="card-body">
+                        <!--説明文-->
+                        <div class="card-text mb-2">
+                            <p class="mb-2"><i class="fa-solid fa-book mr-2"></i><b>説明</b></p>
+                            {{$note->description}}
+                        </div>
+                        <!--コード/Howto-->
+                        <div class="card-text mb-2 border-top pt-3">
+                            <p class="mb-2"><i class="fa-solid fa-code mr-2"></i><b>コード & Howto</b></p>
+                            {{$note->cord_txt}}
+                        </div>
+                        <!--参考URL-->
+                        <div class="card-text mb-4 border-top pt-3">
+                            <p class="mb-2"><i class="fa-solid fa-link mr-2"></i><b>参考URL</b></p>
+                            <a href="{{$note->url_txt}}" target=”_blank”>{{$note->url_txt}}</a>
+                        </div>
+                        
+                        @foreach ($note->tags as $tag)
+                            <i class="fa-solid fa-tags"></i><p class="card-text">{{$tag->name}}</p>
+                        @endforeach
+                        <a href="/notes" class="btn btn-outline-success">一覧画面へ</a>
+                        <a href="/notes/{{$note->id}}/edit" class="btn btn-outline-primary">編集</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

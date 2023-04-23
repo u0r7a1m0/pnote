@@ -16,9 +16,9 @@ return new class extends Migration
             $table->timestamps();
             
             $table->string('name')->nullable(false);
-            $table->string('description')->nullable(false);
-            $table->string('cord_txt');
-            $table->string('url_txt');
+            $table->text('description')->nullable(false);
+            $table->text('cord_txt')->nullable();
+            $table->string('url_txt')->nullable();
             
             $table->integer('user_id')->constrained();
             $table->boolean('public_status')->default(1);

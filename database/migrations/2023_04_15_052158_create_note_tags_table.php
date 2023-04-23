@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id()->nullable(false);
             $table->timestamps();
             
-            $table->integer('tag_id')->constrained();
-            $table->integer('note_id')->constrained();
+
+            $table->foreignId('note_id')->constrained()->onDelete('cascade');
+            $table->foreignId('tag_id')->constrained()->onDelete('cascade');
         });
     }
 

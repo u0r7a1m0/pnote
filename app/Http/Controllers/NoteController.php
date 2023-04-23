@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Note;
+use App\Models\Tag;
+use App\Models\NoteTags;
 use Illuminate\Http\Request;
 use Auth;
 class NoteController extends Controller
@@ -13,20 +15,26 @@ class NoteController extends Controller
     public function index()
     {
         // return view('notes.index'); //
-        $notes = Note::all();
-        return view('notes/index', ['notes' => $notes]);
+        // $notes = Note::all();
+        // return view('notes/index', ['notes' => $notes]);
+        $notes = Note::with('tags')->get();
+        return view('notes.index', compact('notes'));
 
     }
 
     public function create()
     {
-      
-      return view('notes/create');
-      
+      // $tags = Tag::all();
+      // return view('notes.create', compact('tags'));
+      return view('notes.create', [
+            'note' => new Note(),
+            'tags' => Tag::all(),
+        ]);
+
     }
   
-  public function store(Request $request)
-  {
+    public function store(Request $request)
+    {
       $note = new Note;
       $note->user_id = auth()->user()->id;
       $note->user_id = $request->user()->id;
@@ -37,7 +45,15 @@ class NoteController extends Controller
       $note->url_txt = $request->url_txt;
       $note->public_status   = $request->public_status;
       $note->save();
-      return redirect('notes/'. $note->id);
+      
+      $tag_ids = $request->input('tag_ids', []);
+      $note->tags()->sync($tag_ids);
+      $validated = $request->validate([
+        'public_status' => 'boolean',
+      ]);
+      
+
+      return redirect('notes/'. $note->id)->with('message', 'Note created successfully!');
     }
     
     public function show($id)

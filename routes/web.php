@@ -26,9 +26,9 @@ Route::resource('users', UserController::class);
 
 // この行を追加
 // Route::get('/', 'HomesController@top')->name('top');
-// // ホーム画面(root)
-// use App\Http\Controllers\HomesController;
-// Route::get('/', [HomesController::class,'top']);
+// ブックマーク
+use App\Http\Controllers\BookmarksController;
+Route::resource('bookmarks', BookmarksController::class);
 
 
 Route::get('/', function () {
@@ -37,6 +37,7 @@ Route::get('/', function () {
 // ノート
 use App\Http\Controllers\NoteController;
 Route::resource('notes', NoteController::class); 
+Route::get('/tags/create', [TagController::class, 'create'])->name('tags.create');
 
 /**
 * 「ログイン機能」インストールで追加されています 

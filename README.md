@@ -1,8 +1,4 @@
 
-![p_note_icon](https://user-images.githubusercontent.com/114331695/231793931-690a25d1-2f39-4b20-8b4e-c7ac5957576d.png)
-
-
-
 ## About 「P! note」仮
 
 P! noteはプログラミング言語を学ぶ際のメソッドやオブジェクトなどをメモしておけるアプリです。(の予定)
