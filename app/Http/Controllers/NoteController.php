@@ -17,15 +17,14 @@ class NoteController extends Controller
         // return view('notes.index'); //
         // $notes = Note::all();
         // return view('notes/index', ['notes' => $notes]);
-        $notes = Note::with('tags')->get();
+
+        $notes = Note::where('public_status', 1)->get();
         return view('notes.index', compact('notes'));
 
     }
 
     public function create()
     {
-      // $tags = Tag::all();
-      // return view('notes.create', compact('tags'));
       return view('notes.create', [
             'note' => new Note(),
             'tags' => Tag::all(),
@@ -45,15 +44,21 @@ class NoteController extends Controller
       $note->url_txt = $request->url_txt;
       $note->public_status   = $request->public_status;
       $note->save();
+      // NoteTag中間テーブルに選択されたTagの情報を保存する
+      if ($request->tags) {
+          $note->tags()->sync($request->tags);
+      }
       
-      $tag_ids = $request->input('tag_ids', []);
-      $note->tags()->sync($tag_ids);
+      // $tag_ids = $request->input('tag_ids', []);
+      // $note->tags()->sync($tag_ids);
       $validated = $request->validate([
         'public_status' => 'boolean',
       ]);
       
 
       return redirect('notes/'. $note->id)->with('message', 'Note created successfully!');
+      
+
     }
     
     public function show($id)

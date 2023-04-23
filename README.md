@@ -14,10 +14,7 @@ P! noteはプログラミング言語を学ぶ際のメソッドやオブジェ�
 
 ## 設計
 
-- **[WF：Figma](https://www.figma.com/file/2BpHwVSeN7eYlaBSGGaCvj/P!-note?node-id=0%3A1&t=OJG8g9s0zDt30EJl-1)**
 - **[ER図](https://drive.google.com/file/d/1RU-11N33-EddnVT3r1U-Uh4LY6Gg5A3K/view?usp=sharing)**
 - **[テーブル定義書](https://docs.google.com/spreadsheets/d/1GKgQ3rCJnP2PGoN3w9seYESWe7TxW5-tFK8x7pf0ZgU/edit?usp=sharing)**
 - **[アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1VIh_aaoTknZWy6K5NJ9si2f4-mH87FEEf16dmFvwDzI/edit?usp=sharing)**
-
-
 

@@ -14,32 +14,32 @@
             <div class="d-flex flex-wrap text-gray-700 text-left bg-blue-100 px-4 py-2 m-2">
                 @foreach($notes as $note)
                 <div class="card m-2" style="width: 20rem;">
-                  <div>
                     <a href="/notes/{{$note->id}}">
-                        <h5 class="card-header mb-2"><b>{{$note->name}}</b></h5>
+                        <div class="card-header d-flex justify-content-between">
+                            
+                        <p><b>{{$note->name}}</b></p>
+                        <div class="d-flex">
+                            <i class="fa-solid fa-bookmark mr-3 mt-1"></i>
+                            <form method="POST" action="{{ route('notes.destroy', $note->id) }}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-danger" onclick="return confirm('本当に削除しますか？')"><i class="fa-solid fa-trash-can"></i></button></button>
+                            </form>
+                        </div>
+ 
+                        </div>
                     </a>
                     <div class="p-2">
                         <a href="/notes/{{$note->id}}">
                             <p class="card-text mb-2">{{$note->description}}</p>
                             @foreach ($note->tags as $tag)
-                            <p class="card-text mb-2">{{$tag->name}}</p>
+                                <span class="card-text rounded bg-info text-white px-2 text-center" style="width:140px"><i class="fa-solid fa-hashtag mr-1"></i><b>{{$tag->name}}</b></span>
                             @endforeach
                         </a>
-                        <form method="POST" action="{{ route('notes.destroy', $note->id) }}">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="text-danger" onclick="return confirm('本当に削除しますか？')"><i class="fa-solid fa-trash-can"></i></button></button>
-                        </form>
-
                     </div>
-
-                    
-
-                  </div>
                 </div>
                 @endforeach
             </div>
         </div>
-        
     </div>
 </x-app-layout>

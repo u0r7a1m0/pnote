@@ -9,6 +9,9 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{$note->name}}
+                    @foreach ($note->tags as $tag)
+                        <span class="card-text rounded bg-info text-white px-2 text-center ml-4" style="width:140px"><i class="fa-solid fa-hashtag mr-1"></i><b>{{$tag->name}}</b></span>
+                    @endforeach
                 </div>
             </div>
             <div class="flex-1 text-gray-700 text-left bg-blue-100 px-4 py-2 m-2">
@@ -31,11 +34,11 @@
                             <a href="{{$note->url_txt}}" target=”_blank”>{{$note->url_txt}}</a>
                         </div>
                         
-                        @foreach ($note->tags as $tag)
-                            <i class="fa-solid fa-tags"></i><p class="card-text">{{$tag->name}}</p>
-                        @endforeach
+                        <div>
+                            
                         <a href="/notes" class="btn btn-outline-success">一覧画面へ</a>
                         <a href="/notes/{{$note->id}}/edit" class="btn btn-outline-primary">編集</a>
+                        </div>
                     </div>
                 </div>
             </div>

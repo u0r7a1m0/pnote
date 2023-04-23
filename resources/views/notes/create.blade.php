@@ -18,7 +18,8 @@
                     @csrf
                     <!--新規登録-->
                     <div class="mt-2">
-                        <p>タイトル</p>
+                        
+                        <p><i class="fa-solid fa-flag"></i><b>タイトル</b></p>
                         <input type="textarea" name="name" placeholder="メソッドやオブジェクト名" class="p-2" size="80" >
                     </div>
                     
@@ -40,23 +41,47 @@
                     </div>
                     
 
+                    
                     <div class="form-group mt-2">
-                        <label for="tag_ids">{{ __('Tag') }}</label>
-                        <div>
-                            <select name="tag" id="tag" class="form-control">
-                                @foreach ($tags as $tag)
+                        <p><i class="fa-solid fa-hashtag mr-2"></i><b class="mr-3">タグ</b></p>
+                        <select name="tags[]" class="form-control" style="width:30%">
+                            @foreach ($tags as $tag)
                                 <option value="{{ $tag->id }}">{{ $tag->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                            @endforeach
+                        </select>
+                        <label>
+                            <input type="checkbox" name="public_status" value="1" checked>公開する
+                        </label>
+                        
+                        <label>
+                            <input type="checkbox" name="is_private" value="1">非公開にする
+                        </label>
+                        
+                        <script src="{{ asset('js/custom.js') }}"></script>
+
+                        <script>
+                        $(function() {
+                            $('input[name="public_status"]').on('change', function() {
+                                if ($(this).prop('checked')) {
+                                    $('input[name="is_private"]').prop('disabled', true);
+                                } else {
+                                    $('input[name="is_private"]').prop('disabled', false);
+                                }
+                            });
+                            
+                            $('input[name="is_private"]').on('change', function() {
+                                if ($(this).prop('checked')) {
+                                    $('input[name="public_status"]').prop('disabled', true);
+                                } else {
+                                    $('input[name="public_status"]').prop('disabled', false);
+                                }
+                            });
+                        });
+                        </script>
+
                     </div>
     
-                    <div class="mt-2">
-                        <input type="checkbox" name="public_status" value="1">
-                        <label>公開</label>
-                        <input type="checkbox" name="public_status" value="0">
-                        <label>非公開</label>
-                    </div>
+  
                     
                     <div class="mt-3">
                         <button type="submit" class="btn text-white btn-success bg-success">Note Create!!</button>
@@ -79,4 +104,8 @@
       width:400px;
       height:200px
     }
+
 </style>
+
+
+

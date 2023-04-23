@@ -29,10 +29,12 @@ Route::resource('users', UserController::class);
 // ブックマーク
 use App\Http\Controllers\BookmarksController;
 Route::resource('bookmarks', BookmarksController::class);
-
+use App\Http\Controllers\TagController;
+Route::resource('tags', TagController::class);
 
 Route::get('/', function () {
     return view('welcome');
+    
 });
 // ノート
 use App\Http\Controllers\NoteController;
