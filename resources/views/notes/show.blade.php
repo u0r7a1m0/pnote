@@ -26,7 +26,8 @@
                         <!--コード/Howto-->
                         <div class="card-text mb-2 border-top pt-3">
                             <p class="mb-2"><i class="fa-solid fa-code mr-2"></i><b>コード & Howto</b></p>
-                            {{$note->cord_txt}}
+                            
+                            <p>{!! nl2br(e($note->cord_txt)) !!}</p>
                         </div>
                         <!--参考URL-->
                         <div class="card-text mb-4 border-top pt-3">

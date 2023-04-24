@@ -6,6 +6,7 @@ use App\Models\NoteTag;
 use Illuminate\Http\Request;
 
 class NoteTagController extends Controller
+
 {
     /**
      * Display a listing of the resource.

@@ -14,10 +14,6 @@ class NoteController extends Controller
      */
     public function index()
     {
-        // return view('notes.index'); //
-        // $notes = Note::all();
-        // return view('notes/index', ['notes' => $notes]);
-
         $notes = Note::where('public_status', 1)->get();
         return view('notes.index', compact('notes'));
 
@@ -69,9 +65,18 @@ class NoteController extends Controller
 
     public function edit($id)
     {
-      $note = Note::find($id);
-      return view('notes.edit', ['note' => $note]);
+        $note = Note::find($id);
+        $tags = Tag::all();
+        $note_tags = NoteTag::where('note_id', $id)->get();
+    
+        return view('notes.edit', [
+            'note' => $note,
+            'tags' => $tags,
+            'note_tags' => $note_tags
+        ]);
     }
+
+
 
     public function update(Request $request, $id)
     {
@@ -83,6 +88,9 @@ class NoteController extends Controller
       $note->url_txt = $request->url_txt;
       $note->public_status = $request->public_status;
       $note->save();
+      if ($request->tags) {
+          $note->tags()->sync($request->tags);
+      }
       return redirect('notes/'.$id);
     }
 
