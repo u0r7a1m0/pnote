@@ -16,9 +16,9 @@ class NoteController extends Controller
      */
     public function index(Request $request)
     {
-
+    
     $notes = Note::query()->where('public_status', 1);
-
+    
     // キーワードで検索
     if ($request->has('keyword')) {
         $keyword = $request->input('keyword');

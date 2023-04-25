@@ -11,10 +11,10 @@ class TagSeeder extends Seeder
     public function run()
     {
         $tags = [
-            ['name' => 'Laravel'],
+            ['name' => 'Ruby'],
             ['name' => 'PHP'],
             ['name' => 'JavaScript'],
-            ['name' => 'Ruby'],
+            ['name' => 'Laravel'],
         ];
 
         foreach ($tags as $tag) {

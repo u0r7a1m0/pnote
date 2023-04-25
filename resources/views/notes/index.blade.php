@@ -49,7 +49,19 @@
                         <div class="p-2">
                             <p class="card-text mb-2">{{$note->description}}</p>
                             @foreach ($note->tags as $tag)
-                                <span class="card-text rounded bg-info text-white px-2 text-center" style="width:140px"><i class="fa-solid fa-hashtag mr-1"></i><b>{{$tag->name}}</b></span>
+                                <span class="card-text text-white text-center" style="width:140px">
+                                @if ($tag->name == "Ruby")
+                                <span class="bg-danger rounded px-2"><i class="fa-solid fa-hashtag mr-1"></i>{{$tag->name}}</span>
+                                @elseif ($tag->name == "PHP")
+                                <span class="bg-primary rounded px-2"><i class="fa-solid fa-hashtag mr-1"></i>{{$tag->name}}</span>
+                                @elseif ($tag->name == "JavaScript")
+                                <span class="bg-success rounded px-2"><i class="fa-solid fa-hashtag mr-1"></i>{{$tag->name}}</span>
+                                @elseif ($tag->name == "Laravel")
+                                <span class="bg-secondary rounded px-2"><i class="fa-solid fa-hashtag mr-1"></i>{{$tag->name}}</span>
+                                @else
+                                <span class="bg-info rounded px-2"><i class="fa-solid fa-hashtag mr-1"></i>{{$tag->name}}</span>
+                                @endif
+                                </b></span>
                             @endforeach
                         </div>
                     </div>

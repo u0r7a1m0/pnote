@@ -7,12 +7,24 @@
      <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{$note->name}}
-                    @foreach ($note->tags as $tag)
-                        <span class="card-text rounded bg-info text-white px-2 text-center ml-4" style="width:140px"><i class="fa-solid fa-hashtag mr-1"></i><b>{{$tag->name}}</b></span>
-                    @endforeach
-                </div>
+                <p class="card-text p-6"><i class="fa-brands fa-pagelines mr-2" style="color: #1f5127;"></i>{{$note->name}}
+                @foreach ($note->tags as $tag)
+                    <span class="card-text text-white text-center ml-4" style="width:140px">
+                    @if ($tag->name == "Ruby")
+                    <span class="bg-danger rounded px-2"><i class="fa-solid fa-hashtag mr-1"></i>{{$tag->name}}</span>
+                    @elseif ($tag->name == "PHP")
+                    <span class="bg-primary rounded px-2"><i class="fa-solid fa-hashtag mr-1"></i>{{$tag->name}}</span>
+                    @elseif ($tag->name == "JavaScript")
+                    <span class="bg-success rounded px-2"><i class="fa-solid fa-hashtag mr-1"></i>{{$tag->name}}</span>
+                    @elseif ($tag->name == "Laravel")
+                    <span class="bg-secondary rounded px-2"><i class="fa-solid fa-hashtag mr-1"></i>{{$tag->name}}</span>
+                    @else
+                    <span class="bg-info rounded px-2"><i class="fa-solid fa-hashtag mr-1"></i>{{$tag->name}}</span>
+                    @endif
+                    </b></span>
+                @endforeach
+                </p>
+                    
             </div>
             <div class="flex-1 text-gray-700 text-left bg-blue-100 px-4 py-2 m-2">
 

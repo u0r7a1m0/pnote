@@ -18,10 +18,10 @@
                 @else
                     @foreach ($notes as $note)
                     <div class="card m-2" style="width: 20rem;">
-                        <a href="/notes/{{$note->id}}">
                             <div class="card-header d-flex justify-content-between">
                                 
-                            <p><b>{{$note->name}}</b></p>
+                                
+                        <a href="/notes/{{$note->id}}"><p><b>{{$note->name}}</b></p></a>
                             <div class="d-flex">
                                 @if ($note->public_status)
                                 <i class="fa-solid fa-lock-open mr-2 mt-1" style="color: #4eb75a;"></i>
@@ -36,14 +36,14 @@
                             </div>
      
                             </div>
-                        </a>
+
                         <div class="p-2">
-                            <a href="/notes/{{$note->id}}">
+
                                 <p class="card-text mb-2">{{$note->description}}</p>
                                 @foreach ($note->tags as $tag)
                                     <span class="card-text rounded bg-info text-white px-2 text-center" style="width:140px"><i class="fa-solid fa-hashtag mr-1"></i><b>{{$tag->name}}</b></span>
                                 @endforeach
-                            </a>
+  
                         </div>
                     </div>
                     @endforeach
