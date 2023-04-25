@@ -54,21 +54,19 @@
                     <div class="form-group mt-3">
                         <p><i class="fa-solid fa-hashtag mr-2"></i><b class="mr-3">タグ</b></p>
                         <select name="tags[]" class="form-control" style="width:30%">
-                            <!--<option value="">タグを選択してください</option>-->
                             @foreach ($tags as $tag)
-                            
                                 <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                             @endforeach
                         </select>
-                    </div>    
+                    </div>
+                    
+                    
                     <div class="form-group mt-3">
                         <p><i class="fa-solid fa-key mr-2"></i><b class="mr-3">公開設定</b></p>
                         <select name="public_status" class="form-control"  style="width:30%">
                             <option value="1">公開</option>
                             <option value="0">非公開</option>
                         </select>
-                        
-                     
                     </div>
 
                     <div class="mt-3">

@@ -14,6 +14,9 @@
             </div>
             
                     
+            @if ($notes->isEmpty())
+                <p class="m-3">登録がありません。</p>
+            @else
             <!--検索フォーム-->
             <div class="row">
                 <form action="{{ route('notes.index') }}" method="get" class="form-inline my-3 ml-5">
@@ -35,14 +38,13 @@
                         <div class="card-header d-flex justify-content-between">
                             <p><a href="/notes/{{$note->id}}"><b>{{$note->name}}</b></a></p>
                             <div class="d-flex">
-                                <i class="fa-solid fa-bookmark mr-3 mt-1"></i>
-                                
+                                @if (Auth::check())
                                 <form method="POST" action="{{ route('notes.destroy', $note->id) }}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="text-danger" onclick="return confirm('本当に削除しますか？')"><i class="fa-solid fa-trash-can"></i></button></button>
+                                    <button type="submit" class="text-danger" onclick="return confirm('本当に削除しますか？')"><i class="fa-solid fa-trash-can"></i></button>
                                 </form>
-                                
+                                @endif
                             </div>
                         </div>
                         
@@ -68,7 +70,7 @@
                     @endforeach
                 </div>
             </div>
-            
+            @endif
         </div>
     </div>
 </x-app-layout>

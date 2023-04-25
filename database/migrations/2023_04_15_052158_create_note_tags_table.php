@@ -13,11 +13,13 @@ return new class extends Migration
     {
         Schema::create('note_tags', function (Blueprint $table) {
             $table->id()->nullable(false);
+            $table->boolean('is_bookmarked')->default(false);
             $table->timestamps();
             
 
             $table->foreignId('note_id')->constrained()->onDelete('cascade');
             $table->foreignId('tag_id')->constrained()->onDelete('cascade');
+            
         });
     }
 
@@ -26,6 +28,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('note_tags');
+        Schema::table('note_tag', function (Blueprint $table) {
+            $table->dropColumn('is_bookmarked');
+        });
     }
 };

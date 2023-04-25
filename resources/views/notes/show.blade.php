@@ -35,22 +35,31 @@
                             <p class="mb-2"><i class="fa-solid fa-book mr-2"></i><b>説明</b></p>
                             {{$note->description}}
                         </div>
+                        
                         <!--コード/Howto-->
                         <div class="card-text mb-2 border-top pt-3">
                             <p class="mb-2"><i class="fa-solid fa-code mr-2"></i><b>コード & Howto</b></p>
-                            
                             <p>{!! nl2br(e($note->cord_txt)) !!}</p>
                         </div>
+                        
                         <!--参考URL-->
                         <div class="card-text mb-4 border-top pt-3">
                             <p class="mb-2"><i class="fa-solid fa-link mr-2"></i><b>参考URL</b></p>
                             <a href="{{$note->url_txt}}" target=”_blank”>{{$note->url_txt}}</a>
                         </div>
                         
+                        <div class="card-text mb-4 border-top pt-3">
+                            <p><i class="fa-solid fa-key mr-2"></i><b class="mr-3">公開設定</b></p>
+                            @if ($note->public_status)
+                                <p class="my-2">公開する</p>
+                            @else
+                                <p class="my-2">公開しない</p>
+                            @endif
+                        </div>
+                        
                         <div>
-                            
-                        <a href="/notes" class="btn btn-outline-success">一覧画面へ</a>
-                        <a href="/notes/{{$note->id}}/edit" class="btn btn-outline-primary">編集</a>
+                            <a href="/notes" class="btn btn-outline-success">一覧画面へ</a>
+                            <a href="/notes/{{$note->id}}/edit" class="btn btn-outline-primary">編集</a>
                         </div>
                     </div>
                 </div>

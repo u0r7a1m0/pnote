@@ -48,7 +48,7 @@
                         </a>
                         
                         <a href="{{ route('register') }}">
-                            <a href="{{ route('login') }}">
+                            <a href="{{ route('register') }}">
                             <div>
                                 <h2 class="text-white btn btn-success px-5">SIGN UP</h2>
                             </div>

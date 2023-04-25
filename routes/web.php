@@ -41,6 +41,8 @@ use App\Http\Controllers\NoteController;
 Route::resource('notes', NoteController::class); 
 Route::get('/tags/create', [TagController::class, 'create'])->name('tags.create');
 
+Route::get('/note/{id}/edit', 'NoteController@edit')->middleware('auth');
+
 /**
 * 「ログイン機能」インストールで追加されています 
 */
