@@ -22,7 +22,7 @@
                         {{ __('New Tag') }}
                     </x-nav-link>
                     <x-nav-link :href="route('bookmarks.index')" :active="request()->routeIs('bookmarks.index')">
-                        {{ __('Bookmark') }}
+                        {{ __('My Page') }}
                     </x-nav-link>
                 </div>
             </div>

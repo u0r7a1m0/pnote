@@ -17,16 +17,16 @@
     <body class="antialiased">
 
         
-        <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
+        <div class="m-3">
             @if (Route::has('login'))
-                <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
+                <div class="sm:fixed sm:right-4 p-6 text-right">
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
+                        <a href="{{ url('/dashboard') }}" class="">Dashboard</a>
                     @else
-                        <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
+                        <a href="{{ route('login') }}" class="">Log in</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+                            <a href="{{ route('register') }}" class="ml-4">Register</a>
                         @endif
                     @endauth
                 </div>
@@ -36,39 +36,25 @@
 
 
                 <div class="mt-16">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <a href="{{ route('login') }}" class="btn btn-success">
-                            <div>
-                                <div class="h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full"></div>
-                                <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">log in</h2>
-                                <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                    登録済みの方はこちら
-                                </p>
+                    <div class="mt-5 text-center">
+                    <p class="pt-5">プログラミング言語のメソッドやオブジェクトなどを<br>メモしておけるアプリケーションです！</p>
+                    
+                    <div class="d-flex justify-content-center pt-5">
+                        
+                        <a href="{{ route('login') }}">
+                            <div class="mr-5">
+                                <h2 class="text-white btn btn-info px-5">LOGIN</h2>
                             </div>
                         </a>
                         
-
-                        <a href="{{ route('register') }}", class="btn btn-success rounded-circle">
+                        <a href="{{ route('register') }}">
+                            <a href="{{ route('login') }}">
                             <div>
-                                <div class="h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full"> </div>
-                                <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Sign up</h2>
-                                <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                    <!--アカウントお持ちでない方はこちら-->
-                                </p>
+                                <h2 class="text-white btn btn-success px-5">SIGN UP</h2>
                             </div>
                         </a>
-                        
-                        
-                        <a href="{{ url('auth/google') }}", class="btn btn-success">
-                            <div>
-                                <div class="h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full"></div>
-                                <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Google</h2>
-                                <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                    Googleログイン
-                                </p>
-                            </div>
-                        </a>
-
+                    </div>
+  
                     </div>
                 </div>
 
@@ -84,5 +70,8 @@
         background-position: bottom;
         background-size: cover;
         background-attachment: fixed;
+    }
+    p{
+        font-family: YuGothic,'Yu Gothic',YuGothic,'Yu Gothic',sans-serif;
     }
 </style>

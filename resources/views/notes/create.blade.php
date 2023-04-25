@@ -12,6 +12,9 @@
                     <i class="fa-brands fa-pagelines mr-2" style="color: #1f5127;"></i>{{ __("New Post") }}
                 </div>
             </div>
+            
+
+            
             <div class="dark:bg-gray-800 overflow-hidden sm:rounded-lg my-2 ml-4">
   
                     <form action="/notes" method="POST">
@@ -21,11 +24,17 @@
                         
                         <p><i class="fa-solid fa-flag mr-2"></i><b>タイトル</b></p>
                         <input type="textarea" name="name" placeholder="メソッドやオブジェクト名" class="p-2" size="80" >
+                        @error('name')
+                            <div class="alert text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     
                     <div class="mt-3">
                         <p><i class="fa-solid fa-book mr-2"></i><b>説明文</b></p>
                         <input type="textarea" name="description" placeholder="メソッドやオブジェクトの説明を入力" class="p-2" size="80" >
+                        @error('description')
+                            <div class="alert text-danger">{{ $message }}</div>
+                        @enderror
 
                     </div>
                     
@@ -45,7 +54,9 @@
                     <div class="form-group mt-3">
                         <p><i class="fa-solid fa-hashtag mr-2"></i><b class="mr-3">タグ</b></p>
                         <select name="tags[]" class="form-control" style="width:30%">
+                            <!--<option value="">タグを選択してください</option>-->
                             @foreach ($tags as $tag)
+                            
                                 <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                             @endforeach
                         </select>
@@ -66,6 +77,7 @@
                 </form>
             </div>
         </div>
+
 
     </div>
 </x-app-layout>

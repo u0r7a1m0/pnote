@@ -31,7 +31,7 @@
             <a href="/bookmarks.index">
                 <div class="card m-2" style="width: 18rem;">
                     <img src="{{ asset('storage/images/bookmark01.jpg') }}" class="card-img-top">
-                    <h5 class="card-header"><i class="fa-solid fa-book-bookmark mr-2"></i><b>【Note】ブックマーク</b></h5>
+                    <h5 class="card-header"><i class="fa-solid fa-book-bookmark mr-2"></i><b>【Note】マイページ</b></h5>
                 </div>
             </a>
         </div>

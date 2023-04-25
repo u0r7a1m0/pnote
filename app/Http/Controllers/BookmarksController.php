@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class BookmarksController extends Controller
 {
@@ -11,8 +13,10 @@ class BookmarksController extends Controller
      */
     public function index()
     {
-        // $bookmarks = Bookmarks::all();
-        return view('bookmarks.index');    //
+        $user = Auth::user();
+        $notes = $user->notes;
+
+        return view('bookmarks.index', ['notes' => $notes]);
     }
 
     /**

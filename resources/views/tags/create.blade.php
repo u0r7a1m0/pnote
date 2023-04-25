@@ -21,6 +21,9 @@
                     <div class="mt-4">
                         <p><i class="fa-solid fa-hashtag mr-2 mb-2"></i><b class="mr-3">タグ名</b></p>
                         <input type="textarea" name="name" placeholder="メソッドやオブジェクト名" class="p-2" size="80" >
+                        @error('name')
+                            <div class="alert text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <div class="mt-3">
