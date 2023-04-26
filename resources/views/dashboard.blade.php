@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
      <div class="m-5">
-        <div class="d-flex flex-wrap text-gray-700 text-left bg-blue-100 px-4 py-2 m-2">
+        <div class="d-flex flex-wrap text-gray-700 text-left px-4 py-2 m-2">
             <a href="/notes/">
                 <div class="card m-2" style="width: 18rem;">
                     <img src="{{ asset('/images/book02.jpg') }}" class="card-img-top">

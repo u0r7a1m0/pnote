@@ -32,7 +32,7 @@
             
             <!--一覧画面-->
             <div class="row">
-                <div class="d-flex flex-wrap text-gray-700 text-left bg-blue-100 px-4 py-2 m-2">
+                <div class="d-flex flex-wrap text-gray-700 text-left px-4 py-2 m-2">
                     @foreach($notes as $note)
                     <div class="card m-2" style="width: 20rem;">
                         <div class="card-header d-flex justify-content-between">
