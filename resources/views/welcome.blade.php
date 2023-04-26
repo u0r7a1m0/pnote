@@ -65,7 +65,7 @@
 
 <style>
     body{
-        background-image: url('storage/images/kirin.jpg');
+        background-image: url('/images/kirin.jpg');
         background-repeat: no-repeat;
         background-position: bottom;
         background-size: cover;
