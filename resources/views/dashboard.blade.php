@@ -21,14 +21,14 @@
                 </div>
             </a>
             
-            <a href="/tags.create">
+            <a href="/tags/create">
                 <div class="card m-2" style="width: 18rem;">
                     <img src="{{ asset('/images/tag01.jpg') }}" class="card-img-top">
                     <h5 class="card-header"><i class="fa-solid fa-tags mr-2"></i><b>【Tag】新規投稿画面</b></h5>
                 </div>
             </a>
             
-            <a href="/bookmarks.index">
+            <a href="/bookmarks">
                 <div class="card m-2" style="width: 18rem;">
                     <img src="{{ asset('/images/bookmark01.jpg') }}" class="card-img-top">
                     <h5 class="card-header"><i class="fa-solid fa-book-bookmark mr-2"></i><b>【Note】マイページ</b></h5>
