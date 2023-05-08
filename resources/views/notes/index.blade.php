@@ -39,11 +39,7 @@
                             <p><a href="/notes/{{$note->id}}"><b>{{$note->name}}</b></a></p>
                             <div class="d-flex">
                                 @if (Auth::check())
-                                <form method="POST" action="{{ route('notes.destroy', $note->id) }}">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="text-danger" onclick="return confirm('本当に削除しますか？')"><i class="fa-solid fa-trash-can"></i></button>
-                                </form>
+                                
                                 @endif
                             </div>
                         </div>

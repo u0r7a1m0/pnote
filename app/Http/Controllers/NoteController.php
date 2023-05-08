@@ -6,8 +6,10 @@ use App\Models\Note;
 use App\Models\Tag;
 use App\Models\NoteTags;
 use Illuminate\Http\Request;
-use Auth;
+// use Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+
 
 class NoteController extends Controller
 {
@@ -92,8 +94,8 @@ class NoteController extends Controller
     
     public function show($id)
     {
-      $note = Note::find($id);
-      return view('notes.show', ['note' => $note]);
+        $note = Note::find($id);
+        return view('notes.show', ['note' => $note]);
     }
 
     public function edit($id)
