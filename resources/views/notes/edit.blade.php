@@ -26,8 +26,6 @@
                 <div class="mt-3">
                     <p><i class="fa-solid fa-code mr-2"></i><b>Cord / HowTo</b></p>
                     <textarea name="cord_txt" class="p-2 form-control" rows="8" placeholder="コード例、使い方例を入力" >{{ $note->cord_txt }}</textarea>
-
-                    
                 </div>
 
                 <div class="mt-3">
@@ -71,5 +69,4 @@
       width:400px;
       height:200px;
     }
-
 </style>
