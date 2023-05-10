@@ -26,3 +26,9 @@ class NoteTag extends Model
         return $this->belongsTo(Note::class);
     }
 }
+$notes = DB::table('notes')
+    ->join('note_tags', 'notes.id', '=', 'note_tags.note_id')
+    ->join('tags', 'note_tags.tag_id', '=', 'tags.id')
+    ->where('tags.name', '=', $tagName)
+    ->select('notes.*')
+    ->get();

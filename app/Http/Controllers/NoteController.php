@@ -18,35 +18,39 @@ class NoteController extends Controller
      */
     public function index(Request $request)
     {
-    
-    $notes = Note::query()->where('public_status', 1);
-    
-    // キーワードで検索
-    if ($request->has('keyword')) {
-        $keyword = $request->input('keyword');
-        $notes->where('name', 'like', "%{$keyword}%")
-              ->orWhere('description', 'like', "%{$keyword}%")
-              ->orWhere('cord_txt', 'like', "%{$keyword}%");
-    } else {
-        $keyword = null;
-    }
-    // タグで検索
-    if ($request->has('tag')) {
-        $tag = $request->input('tag');
-        $notes->whereHas('tags', function ($query) use ($tag) {
-        $query->where('name', $tag);
-    });
+        $notes = Note::query()->where('public_status', 1);
 
-    }
-    
-    $tags = Tag::all();
+        // キーワードで検索
+        if ($request->has('keyword')) {
+            $keyword = $request->input('keyword');
+            $notes->where('name', 'like', "%{$keyword}%")
+                ->orWhere('description', 'like', "%{$keyword}%")
+                ->orWhere('cord_txt', 'like', "%{$keyword}%");
+        } else {
+            $keyword = null;
+        }
 
-    return view('notes.index', [
-        'notes' => $notes->paginate(10)->where('public_status', 1),
-        'keyword' => $keyword,
-        'tags' => $tags,
+        // タグで検索
+        $searchTag = $request->input('search_tag');
+        if ($searchTag) {
+            $notes->whereHas('tags', function ($query) use ($searchTag) {
+                $query->where('name', $searchTag);
+            });
+            $request->session()->put('search_tag', $searchTag);
+        } else {
+            $request->session()->forget('search_tag');
+        }
+
+        $tags = Tag::all();
+
+        return view('notes.index', [
+            'notes' => $notes->paginate(10)->where('public_status', 1),
+            'keyword' => $keyword,
+            'tags' => $tags,
         ]);
     }
+
+
 
     public function create()
     {

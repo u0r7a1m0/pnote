@@ -19,16 +19,31 @@
             @else
             <!--検索フォーム-->
             <div class="row">
-                <form action="{{ route('notes.index') }}" method="get" class="form-inline my-3 ml-5">
-                    <div class="form-group mr-2">
-                        <label for="keyword" class="sr-only">キーワード</label>
-                        <input type="text" name="keyword" id="keyword" value="{{ old('keyword', isset($keyword) ? $keyword : '') }}" placeholder="キーワード" class="border-0">
+                <div class="d-flex">
 
-                    </div>
-                    
-                    <button type="submit" class="btn btn-outline-primary"><i class="fa-solid fa-magnifying-glass"></i></button>
-                </form>
+                    <form action="{{ route('notes.index') }}" method="get" class="form-inline my-3 ml-5">
+                        <div class="form-group mr-2">
+                            <label for="keyword" class="sr-only">キーワード</label>
+                            <input type="text" name="keyword" id="keyword" value="{{ old('keyword', isset($keyword) ? $keyword : '') }}" placeholder="キーワード" class="border-0">
+                            
+                        </div>
+                        
+                        <button type="submit" class="btn btn-outline-primary"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                    <form action="{{ route('notes.index') }}" method="GET" class="form-inline my-3 ml-5">
+                        <select name="search_tag">
+                            <option value="">--タグを選択--</option>
+                            @foreach($tags as $tag)
+                            <option value="{{ $tag->name }}" {{ request('search_tag') == $tag->name || session('search_tag') == $tag->name ? 'selected' : '' }}>{{ $tag->name }}</option>
+                            @endforeach
+                        </select>
+                        <button type="submit" class="btn btn-outline-success ml-3"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                </div>
             </div>
+
+
+
             
             <!--一覧画面-->
             <div class="row">
@@ -37,11 +52,6 @@
                     <div class="card m-2" style="width: 20rem;">
                         <div class="card-header d-flex justify-content-between">
                             <p><a href="/notes/{{$note->id}}"><b>{{$note->name}}</b></a></p>
-                            <div class="d-flex">
-                                @if (Auth::check())
-                                
-                                @endif
-                            </div>
                         </div>
                         
                         <div class="p-2">

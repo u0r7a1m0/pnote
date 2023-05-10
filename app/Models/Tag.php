@@ -18,3 +18,5 @@ class Tag extends Model
     }
     
 }
+$tags = Tag::all();
+
