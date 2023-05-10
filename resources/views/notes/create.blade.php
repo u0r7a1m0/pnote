@@ -40,7 +40,7 @@
                     
                     <div class="mt-3">
                         <p><i class="fa-solid fa-code mr-2"></i><b class="mr-3">Cord / HowTo</b><span class="text-secondary">※任意</span></p>
-                        <textarea class="p-2 form-control" rows="5" name="cord_txt" placeholder="コード例、使い方例を入力" ></textarea>
+                        <textarea class="p-2 form-control" rows="8" name="cord_txt" placeholder="コード例、使い方例を入力" ></textarea>
                     </div>
 
                     
@@ -59,6 +59,7 @@
                             @endforeach
                         </select>
                     </div>
+                    
                     
                     
                     <div class="form-group mt-3">

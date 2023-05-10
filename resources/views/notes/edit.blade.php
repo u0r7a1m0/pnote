@@ -25,7 +25,9 @@
                 
                 <div class="mt-3">
                     <p><i class="fa-solid fa-code mr-2"></i><b>Cord / HowTo</b></p>
-                    <textarea class="p-2 form-control" rows="5" name="cord_txt" placeholder="コード例、使い方例を入力" ></textarea>
+                    <textarea name="cord_txt" class="p-2 form-control" rows="8" placeholder="コード例、使い方例を入力" >{{ $note->cord_txt }}</textarea>
+
+                    
                 </div>
 
                 <div class="mt-3">
@@ -36,10 +38,9 @@
                 <div class="form-group mt-3">
                     <p><i class="fa-solid fa-hashtag mr-2"></i><b class="mr-3">タグ</b></p>
                     <select name="tags[]" class="form-control" style="width:30%">
-                        @foreach ($tags as $tag)
-                        
-                            <option value="{{ $tag->id }}">{{ $tag->name }}</option>
-                        @endforeach
+                    @foreach ($tags as $tag)
+                        <option value="{{ $tag->id }}" {{ $note->tags->contains($tag->id) ? 'selected' : '' }}>{{ $tag->name }}</option>
+                    @endforeach
                     </select>
                 </div> 
                 
@@ -68,7 +69,7 @@
       min-width: 100px;
       min-height: 100px;
       width:400px;
-      height:200px
+      height:200px;
     }
 
 </style>

@@ -13,10 +13,6 @@
                 </div>
             </div>
             
-                    
-            @if ($notes->isEmpty())
-                <p class="m-3">登録がありません。</p>
-            @else
             <!--検索フォーム-->
             <div class="row">
                 <div class="d-flex">
@@ -41,10 +37,10 @@
                     </form>
                 </div>
             </div>
+            @if ($notes->isEmpty())
+                <p class="m-3">登録がありません。</p>
+            @else
 
-
-
-            
             <!--一覧画面-->
             <div class="row">
                 <div class="d-flex flex-wrap text-gray-700 text-left px-4 py-2 m-2">

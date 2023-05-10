@@ -48,6 +48,13 @@ class NoteController extends Controller
             'keyword' => $keyword,
             'tags' => $tags,
         ]);
+        
+    }
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        $notes = Note::search($search)->get();
+        return view('note.index', compact('notes', 'search'));
     }
 
 

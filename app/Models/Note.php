@@ -31,4 +31,13 @@ class Note extends Model
     {
         return $this->belongsTo(User::class);
     }
+    
+    public function scopeSearch($query, $search)
+    {
+        return $query->where('title', 'LIKE', '%'.$search.'%')
+                     ->orWhere('content', 'LIKE', '%'.$search.'%')
+                     ->orWhereHas('tags', function($q) use ($search) {
+                         $q->where('name', 'LIKE', '%'.$search.'%');
+                     });
+    }
 }
