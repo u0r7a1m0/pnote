@@ -9,7 +9,7 @@
             
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <i class="fa-brands fa-pagelines mr-2" style="color: #1f5127;"></i>{{ __("Note") }}
+                    <i class="fa-brands fa-pagelines mr-2" style="color: #1f5127;"></i>{{ __("Note一覧画面") }}
                 </div>
             </div>
             
